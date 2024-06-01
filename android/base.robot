@@ -1,4 +1,7 @@
 *** Settings ***
 Library     AppiumLibrary
+# Utils
 Resource    utils/config.robot
-Resource    pages/cadastroPage.robot
+Resource    utils/commons.robot
+# Pages
+Resource    pages/productRegistrationPage.robot
