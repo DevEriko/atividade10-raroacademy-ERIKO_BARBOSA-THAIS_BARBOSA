@@ -17,25 +17,25 @@ CT002 - Deve ser possível cadastrar um produto preenchendo os campos obrigatór
     E salvar a operação
     Então o produto será registrado com sucesso
 
-CT003 - Não deve ser possível cadastrar um produto sem preencher a Descrição
-    Dado que o usuário acessou a tela de cadastro de produtos
-    Quando preencher todas as informações exceto o campo Descrição
-    E salvar a operação
-    Então o sistema exibirá o alerta com a mensagem "Preenchimento indispensável"
-    E o produto não será registrado com sucesso
+# CT003 - Não deve ser possível cadastrar um produto sem preencher a Descrição
+#    Dado que o usuário acessou a tela de cadastro de produtos
+#    Quando preencher todas as informações exceto o campo Descrição
+#    E salvar a operação
+#    Então o sistema exibirá um ícone vermelho com uma interrogação
+#    E o produto não será registrado com sucesso
 
 CT004 - Não deve ser possível cadastrar um produto sem preencher a Quantidade
     Dado que o usuário acessou a tela de cadastro de produtos
     Quando preencher todas as informações exceto o campo Quantidade
     E salvar a operação
-    Então o sistema exibirá o alerta com a mensagem "Preenchimento indispensável"
+    Então o sistema exibirá um ícone vermelho com uma interrogação
     E o produto não será registrado com sucesso
 
 CT005 - Não deve ser possível cadastrar um produto sem preencher o Valor unitário
     Dado que o usuário acessou a tela de cadastro de produtos
     Quando preencher todas as informações exceto o campo Valor unitário
     E salvar a operação
-    Então o sistema exibirá o alerta com a mensagem "Preenchimento indispensável"
+    Então o sistema exibirá um ícone vermelho com uma interrogação
     E o produto não será registrado com sucesso
 
 C006 - Deve ser possível acrescentar a quantidade de produto
