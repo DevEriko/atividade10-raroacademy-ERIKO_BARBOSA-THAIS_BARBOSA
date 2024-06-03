@@ -18,17 +18,14 @@ Verifica se o contentDesc não contains text
     ${contentDesc}=    AppiumLibrary.Get Element Attribute    ${elemento}    content-desc
     Should Not Contain    ${contentDesc}    ${validarText}
 
-Cria produtos com template
-    [Arguments]    ${codigo}    ${descricao}    ${unidade}    ${quantidade}    ${valor}    ${lote}=
-    Wait Until Element Is Visible    ${BOTÃO_NOVO}
-    Click Element    ${BOTÃO_NOVO}
-    Input Text    ${CAMPO_CÓDIGO}    ${codigo}
-    Input Text    ${CAMPO_DESCRIÇÃO}    ${descricao}
-    Input Text    ${CAMPO_UNIDADE}    ${unidade}
-    Input Text    ${CAMPO_QUANTIDADE}    ${quantidade}
-    Swipe By Percent    80    50    50    10
-    Input Text    ${CAMPO_VAL.UNIT}    ${valor}
-    Input Text    ${CAMPO_LOTE}    ${lote}
-    Click Element    ${BOTÃO_SALVAR}
-    Wait Until Element Is Visible    ${BOTÃO_BUSCAR}
-    Element Should Contain Text    //android.widget.TextView[@text='${descricao}']    ${descricao}
+Criar vários produtos
+    [Arguments]    ${descri}    ${qtd}    ${valunit}
+    Wait Until Element Is Visible    br.com.pztec.estoque:id/Button1
+    Click Element    br.com.pztec.estoque:id/Button1
+    Wait Until Element Is Visible    br.com.pztec.estoque:id/txt_descricao
+    Input Text    br.com.pztec.estoque:id/txt_descricao    ${descri}
+    Input Text    br.com.pztec.estoque:id/txt_quantidade    ${qtd}
+    Input Text    br.com.pztec.estoque:id/txt_valunit    ${valunit}
+    Click Element    br.com.pztec.estoque:id/btn_gravar_assunto
+    Wait Until Element Is Visible    android:id/search_button
+    Element Should Contain Text    //android.widget.TextView[@text='${descri}']    ${descri}

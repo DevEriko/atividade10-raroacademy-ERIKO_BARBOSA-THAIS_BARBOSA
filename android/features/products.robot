@@ -73,31 +73,10 @@ C010 - Deve ser possível excluir o produto
     E confirmar a exclusão
     Então o produto será deletado com sucesso
 
-# C011 - Deve ser possível criar 5 produtos
-#    [Template]    Cria produtos com template
-#    FOR    ${counter}    IN RANGE    1
-#    01    Teclado    São Paulo    50    200,00    08
-#    02    Mouse    Rio de Janeiro    100    100,00    08
-#    03    Monitor    Belo Horizonte    30    2500,00    08
-#    04    Microfone    Salvador    90    450,00    08
-#    05    WebCam    Recife    20    300,00    08
-#    END
-
-C011 - Deve ser possível criar 1 produto
-    [Template]    Cria produtos com template
+C011- Deve ser possível criar mais de 1 produto
+    [Template]    Criar vários produtos
     FOR    ${counter}    IN RANGE    1
-        01    Teclado    São Paulo    50    200,00    08
-        02    Mouse    Rio de Janeiro    100    100,00    08
+        Playstation 5    20    3700
+        Xbox X    20    3700
+        Switch    15    2300
     END
-
-# C012 - Teste
-#    Wait Until Element Is Visible    br.com.pztec.estoque:id/Button1
-#    Click Element    br.com.pztec.estoque:id/Button1
-#    Wait Until Element Is Visible    br.com.pztec.estoque:id/txt_descricao
-#    Input Text    br.com.pztec.estoque:id/txt_descricao    produto teste
-#    Input Text    br.com.pztec.estoque:id/txt_quantidade    10
-#    Swipe By Percent    80    50    50    10
-#    Input Text    br.com.pztec.estoque:id/txt_valunit    5
-#    Click Element    br.com.pztec.estoque:id/btn_gravar_assunto
-#    Wait Until Element Is Visible    android:id/search_button
-#    Element Should Contain Text    //android.widget.TextView[@text='produto teste']    produto teste
