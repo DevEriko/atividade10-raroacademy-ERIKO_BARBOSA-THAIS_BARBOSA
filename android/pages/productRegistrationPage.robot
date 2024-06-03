@@ -80,6 +80,7 @@ ${TEXTO_ATENÇÃO}                xpath=//android.widget.TextView[@resource-id="
 ${BOTÃO_SELECIONAR_ARQUIVO}     xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/btn_procurar"]
 ${BOTÃO_ESTOQUE}                xpath=//android.widget.TextView[@resource-id="android:id/text1" and @text="Estoque"]
 ${GRUPOS.CSV}                   xpath=//android.widget.TextView[@resource-id="android:id/text1" and @text="grupos.csv"]
+${PRODUTOS_CSV}                 xpath=//android.widget.TextView[@resource-id="android:id/text1" and @text="produtos.csv"]
 ${CONFIRMA_RESTAURAÇÃO_SIM}     xpath=//android.widget.Button[@resource-id="android:id/button1"]
 ${MENSAGEM_OP.CONCLUIDA}        xpath=//android.widget.TextView[@resource-id="android:id/message"]
 
@@ -118,11 +119,13 @@ Dado que o usuário acessou a tela de cadastro de produtos
     Click Element    ${BOTÃO_NOVO}
 
 Dado que o usuário acessou a tela de menu do aplicativo
-    Click Element    ${BOTÃO_OK}
+    Dado que o usuário acessou a tela inicial do aplicativo
     Click Element    ${BOTÃO_MENU}
 
-Dado que o usuário acessou a tela de relatórios
-    Click Element    ${BOTÃO_OK}
+Dado que o usuário acessou a tela de menu do aplicativo e possui produtos registrados
+    Criar vários produtos    teclado    5    10
+    Criar vários produtos    mouse    3    50
+    Criar vários produtos    microfone    20    80
     Click Element    ${BOTÃO_MENU}
 
 Quando selecionar a função novo
@@ -195,6 +198,21 @@ Quando acessar a função impotar dados
 Quando acessar a função relatórios
     Click Element    ${CAMPO_RELATÓRIO}
 
+Quando selecionar a opção de restauração desejada
+    Wait Until Element Is Visible    ${BOTÃO_RESTAURAR-PRODUTOS}
+    Click Element    ${BOTÃO_RESTAURAR-PRODUTOS}
+
+Quando selecionar a data inicial e final
+    Wait Until Element Is Visible    ${BOTÃO_DATA_INI}
+    Wait Until Element Is Visible    ${BOTÃO_DATA_FIN}
+    Click Element    ${BOTÃO_DATA_INI}
+    Click Element    ${BOTÃO_OK}
+    Click Element    ${BOTÃO_DATA_FIN}
+    Click Element    ${BOTÃO_OK}
+
+Quando acessar a função visualizar pdf
+    Então o arquivo será gerado em pdf com o filtro selecionado
+
 Então terá acesso a tela de cadastro de produtos
     Element Should Be Visible    ${CAMPO_CÓDIGO}
     Element Should Be Visible    ${CAMPO_DESCRIÇÃO}
@@ -237,6 +255,19 @@ Então visualizará as 3 opções de relatórios do cenário
     Element Should Be Visible    ${INVENTÁRIO_ESTOQUE}
     Element Should Be Visible    ${ENTRADAS_ESTOQUE}
     Element Should Be Visible    ${SAIDAS_ESTOQUE}
+
+Então o sistema exibirá o alerta com a mensagem "Operação concluída! 1 registros inseridos"
+    Wait Until Element Is Visible    ${MENSAGEM_OP.CONCLUIDA}
+    Element Should Not Contain Text    ${MENSAGEM_OP.CONCLUIDA}    3 registros inseridos.
+    Click Element    ${BOTÃO_SIM_CONFIRMA}
+
+Então o arquivo será gerado em pdf com o filtro selecionado
+    Wait Until Element Is Visible    ${BOTÃO_VISUALIZAR_PDF}
+    Click Element    ${BOTÃO_VISUALIZAR_PDF}
+
+Então o sistema exibirá opções para abrir o arquivo e enviá-lo por e-mail
+    Page Should Contain Element    ${BOTÃO_VISUALIZAR_PDF}
+    Page Should Contain Element    ${BOTÃO_ENVIAR_PDF}
 
 E exibirá uma botão para enviar o arquivo .bkp
     Click Element    ${BOTÃO_SIM_CONFIRMA}
@@ -281,6 +312,7 @@ E acessou a função backup
 E salvar a operação
     Click Element    ${BOTÃO_SALVAR}
 
+<<<<<<< HEAD
 E acessou a opção inventário de estoque
     Click Element    ${CAMPO_RELATÓRIO}
     Click Element    ${INVENTÁRIO_ESTOQUE}
@@ -305,3 +337,36 @@ Então o sistema exibirá o arquivo e a opção para enviar por e-mail estará d
     Element Should Be Visible    ${ICONE_ONEDRIVE}
     Element Should Be Visible    ${ICONE_MICROSOFT}
     Element Should Be Visible    ${ICONE_SAMSUNG}
+=======
+E acessou a tela de impotar dados
+    Click Element    ${CAMPO_IMPORTAR}
+
+E selecionar a pasta estoque
+    Swipe By Percent    90    50    50    10
+    Swipe By Percent    60    50    50    10
+    Wait Until Element Is Visible    ${BOTÃO_ESTOQUE}
+    Click Element    ${BOTÃO_ESTOQUE}
+
+E selecionar a pasta .csv
+    Wait Until Element Is Visible    ${PRODUTOS_CSV}
+    Click Element    ${PRODUTOS_CSV}
+
+E confirmar a operação
+    Wait Until Element Is Visible    ${BOTÃO_SIM_CONFIRMA}
+    Click Element    ${BOTÃO_SIM_CONFIRMA}
+
+E acessou a opção de relatório desejada
+    Wait Until Element Is Visible    ${ENTRADAS_ESTOQUE}
+    Click Element    ${ENTRADAS_ESTOQUE}
+
+E selecionar a função gerar pdf
+    Wait Until Element Is Visible    ${BOTÃO_GERAR-PDF}
+    Click Element    ${BOTÃO_GERAR-PDF}
+
+E gerou o relatório desejado
+    Click Element    ${BOTÃO_MENU}
+    Click Element    ${CAMPO_RELATÓRIO}
+    Click Element    ${ENTRADAS_ESTOQUE}
+    Wait Until Element Is Visible    ${BOTÃO_GERAR-PDF}
+    Click Element    ${BOTÃO_GERAR-PDF}
+>>>>>>> bdde13f6eee85024d548cb35ab35010d99d338e0

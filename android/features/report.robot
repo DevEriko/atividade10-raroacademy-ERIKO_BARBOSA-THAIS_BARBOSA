@@ -15,14 +15,13 @@ CT002 - Deve ser possível filtrar as entradas e saídas de produtos por um peri
     Dado que o usuário acessou a tela de relatórios
     E acessou a opção de relatório desejada
     Quando selecionar a data inicial e final
-    E selecionar a função visualizar pdf
+    E selecionar a função gerar pdf
     Então o arquivo será gerado em pdf com o filtro selecionado
 
-CT003 - Deve ser possível visualizar o documento e enviá-lo por e-mail
+CT003 - Deve ser possível visualizar o documento gerado em pdf
     Dado que o usuário acessou a tela de relatórios
     E gerou o relatório desejado
-    Quando acessar a função visualizar pdf
-    Então o sistema exibirá o arquivo e a opção para enviar por e-mail estará disponível
+    Então o sistema exibirá opções para abrir o arquivo e enviá-lo por e-mail
 
 CT004 - Não deve ser possível emitir um relatório sem informar um período
     Dado que o usuário acessou a tela de relatórios
