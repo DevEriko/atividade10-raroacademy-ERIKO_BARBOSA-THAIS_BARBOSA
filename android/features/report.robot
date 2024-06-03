@@ -6,12 +6,12 @@ Test Teardown       Teardown
 
 
 *** Test Cases ***
-CT001 - Deve ser possível visualizar o inventário de estoque, as entradas e saídas de produtos via relatórios
+CT001 - Deve ser possível visualizar o inventário de estoque, as entradas e saídas de produtos via relatorios
     Dado que o usuário acessou a tela de menu do aplicativo
     Quando acessar a função relatórios
     Então visualizará as 3 opções de relatórios do cenário
 
-CT002 - Deve ser possível filtrar as entradas e saídas de produtos por um período de tempo e o resultado deve ser exibido em pdf
+CT002 - Deve ser possível filtrar as entradas e saídas de produtos por um periodo de tempo e o resultado deve ser exibido em pdf
     Dado que o usuário acessou a tela de relatórios
     E acessou a opção de relatório desejada
     Quando selecionar a data inicial e final

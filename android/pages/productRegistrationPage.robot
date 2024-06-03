@@ -100,21 +100,22 @@ ${TEXTO_AJUDA}                  xpath=//android.webkit.WebView[@text="Ajuda"]
 
 *** Keywords ***
 Dado que o usuário acessou a tela inicial do aplicativo
-    FOR    ${counter}    IN RANGE    1    15
-        ${STATUS}=    Run Keyword And Return Status    Element Should Be Visible    ${BOTÃO_OK}
-        IF    '${STATUS}'== ${true}
-            Click Element    ${BOTÃO_OK}
-        ELSE
-            Log    Elemento não encontrado, siga.
-        END
-    END
+    Click Element    ${BOTÃO_OK}
+    # FOR    ${counter}    IN RANGE    1    15
+    #    ${STATUS}=    Run Keyword And Return Status    Element Should Be Visible    ${BOTÃO_OK}
+    #    IF    '${STATUS}'== ${true}
+    #    Click Element    ${BOTÃO_OK}
+    #    ELSE
+    #    Log    Elemento não encontrado, siga.
+    #    END
+    # END
 
 Dado que o usuário acessou a tela de cadastro de produtos
     Dado que o usuário acessou a tela inicial do aplicativo
     Click Element    ${BOTÃO_NOVO}
 
 Dado que o usuário acessou a tela de menu do aplicativo
-    Dado que o usuário acessou a tela inicial do aplicativo
+    Click Element    ${BOTÃO_OK}
     Click Element    ${BOTÃO_MENU}
 
 Quando selecionar a função novo
@@ -184,6 +185,9 @@ Quando selecionar o arquivo desejado
 Quando acessar a função impotar dados
     Click Element    ${CAMPO_IMPORTAR}
 
+Quando acessar a função relatórios
+    Click Element    ${CAMPO_RELATÓRIO}
+
 Então terá acesso a tela de cadastro de produtos
     Element Should Be Visible    ${CAMPO_CÓDIGO}
     Element Should Be Visible    ${CAMPO_DESCRIÇÃO}
@@ -221,6 +225,11 @@ Então visualizará as 4 opções de importação do cenário
     Element Should Be Visible    ${BOTÃO_RESTAURAR-ENTRADAS}
     Element Should Be Visible    ${BOTÃO_RESTAURAR-SAÍDAS}
     Element Should Be Visible    ${BOTÃO_GRUPO-PRODUTOS}
+
+Então visualizará as 3 opções de relatórios do cenário
+    Element Should Be Visible    ${INVENTÁRIO_ESTOQUE}
+    Element Should Be Visible    ${ENTRADAS_ESTOQUE}
+    Element Should Be Visible    ${SAIDAS_ESTOQUE}
 
 E exibirá uma botão para enviar o arquivo .bkp
     Click Element    ${BOTÃO_SIM_CONFIRMA}
