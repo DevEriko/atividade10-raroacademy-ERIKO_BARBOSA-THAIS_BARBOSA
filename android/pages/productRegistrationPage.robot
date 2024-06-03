@@ -172,6 +172,9 @@ Quando selecionar a função Gerar backup
 Quando selecionar o arquivo desejado
     Click Element    ${BOTÃO_SELECIONAR_ARQUIVO}
 
+Quando acessar a função impotar dados
+    Click Element    ${CAMPO_IMPORTAR}
+
 Então terá acesso a tela de cadastro de produtos
     Element Should Be Visible    ${CAMPO_CÓDIGO}
     Element Should Be Visible    ${CAMPO_DESCRIÇÃO}
@@ -203,6 +206,12 @@ Então o produto será deletado com sucesso
 
 Então o sistema exibirá o alerta com a mensagem "Operação concluída!"
     Element Should Be Visible    ${TEXTO_OPERAÇÃO-CONCLUIDA}
+
+Então visualizará as 4 opções de importação do cenário
+    Element Should Be Visible    ${BOTÃO_RESTAURAR-PRODUTOS}
+    Element Should Be Visible    ${BOTÃO_RESTAURAR-ENTRADAS}
+    Element Should Be Visible    ${BOTÃO_RESTAURAR-SAÍDAS}
+    Element Should Be Visible    ${BOTÃO_GRUPO-PRODUTOS}
 
 E exibirá uma botão para enviar o arquivo .bkp
     Click Element    ${BOTÃO_SIM_CONFIRMA}
