@@ -20,6 +20,14 @@ Verifica se o contentDesc não contains text
 
 Criar vários produtos
     [Arguments]    ${descri}    ${qtd}    ${valunit}
+    FOR    ${counter}    IN RANGE    1    15
+        ${STATUS}=    Run Keyword And Return Status    Element Should Be Visible    ${BOTÃO_OK}
+        IF    '${STATUS}'== ${true}
+            Click Element    ${BOTÃO_OK}
+        ELSE
+            Log    Elemento não encontrado, siga.
+        END
+    END
     Wait Until Element Is Visible    br.com.pztec.estoque:id/Button1
     Click Element    br.com.pztec.estoque:id/Button1
     Wait Until Element Is Visible    br.com.pztec.estoque:id/txt_descricao
