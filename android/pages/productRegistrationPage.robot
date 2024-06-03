@@ -222,21 +222,6 @@ Então visualizará as 4 opções de importação do cenário
     Element Should Be Visible    ${BOTÃO_RESTAURAR-SAÍDAS}
     Element Should Be Visible    ${BOTÃO_GRUPO-PRODUTOS}
 
-Então cria produtos com template
-    [Arguments]    ${codigo}    ${descricao}    ${unidade}    ${quantidade}    ${valor}    ${lote}=
-    Wait Until Element Is Visible    ${BOTÃO_NOVO}
-    Click Element    ${BOTÃO_NOVO}
-    Input Text    ${CAMPO_CÓDIGO}    ${codigo}
-    Input Text    ${CAMPO_DESCRIÇÃO}    ${descricao}
-    Input Text    ${CAMPO_UNIDADE}    ${unidade}
-    Input Text    ${CAMPO_QUANTIDADE}    ${quantidade}
-    Swipe By Percent    80    50    50    10
-    Input Text    ${CAMPO_VAL.UNIT}    ${valor}
-    Input Text    ${CAMPO_LOTE}    ${lote}
-    Click Element    ${BOTÃO_SALVAR}
-    Wait Until Element Is Visible    ${BOTÃO_BUSCAR}
-    Element Should Contain Text    //android.widget.TextView[@text='${descricao}']    ${descricao}
-
 E exibirá uma botão para enviar o arquivo .bkp
     Click Element    ${BOTÃO_SIM_CONFIRMA}
 
