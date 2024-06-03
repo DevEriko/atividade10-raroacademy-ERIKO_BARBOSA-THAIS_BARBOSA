@@ -118,6 +118,10 @@ Dado que o usuário acessou a tela de menu do aplicativo
     Click Element    ${BOTÃO_OK}
     Click Element    ${BOTÃO_MENU}
 
+Dado que o usuário acessou a tela de relatórios
+    Click Element    ${BOTÃO_OK}
+    Click Element    ${BOTÃO_MENU}
+
 Quando selecionar a função novo
     Click Element    ${BOTÃO_NOVO}
 
