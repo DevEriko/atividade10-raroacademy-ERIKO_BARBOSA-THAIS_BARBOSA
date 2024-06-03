@@ -124,11 +124,6 @@ Dado que o usuário acessou a tela de menu do aplicativo e possui produtos regis
     Criar vários produtos    microfone    20    80
     Click Element    ${BOTÃO_MENU}
 
-Dado que o usuário acessou a tela de relatórios
-    Click Element    ${BOTÃO_MENU}
-    Wait Until Element Is Visible    ${CAMPO_RELATÓRIO}
-    Click Element    ${CAMPO_RELATÓRIO}
-
 Quando selecionar a função novo
     Click Element    ${BOTÃO_NOVO}
 
