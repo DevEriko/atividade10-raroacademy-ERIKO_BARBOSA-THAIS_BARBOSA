@@ -63,6 +63,7 @@ ${BOTÃO_DATA_FIN}               xpath=//android.widget.TextView[@resource-id="b
 
 # MENU - BACKUP
 ${CAMPO_BACKUP}                 xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/btn_backup"]
+${BOTÃO_GERAR_BACKUP}           xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/btn_gerar"]
 ${BOTÃO_ENVIAR}                 xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/btn_send"]
 ${TEXTO_OPERAÇÃO-CONCLUIDA}     xpath=//android.widget.TextView[@resource-id="android:id/alertTitle"]
 ${TEXTO_ENVIAR}                 xpath=//android.widget.TextView[@resource-id="android:id/message"]
@@ -74,6 +75,7 @@ ${BOTÃO_SELECIONAR_ARQUIVO}     xpath=//android.widget.Button[@resource-id="br.
 ${BOTÃO_ESTOQUE}                xpath=//android.widget.TextView[@resource-id="android:id/text1" and @text="Estoque"]
 ${GRUPOS.CSV}                   xpath=//android.widget.TextView[@resource-id="android:id/text1" and @text="grupos.csv"]
 ${CONFIRMA_RESTAURAÇÃO_SIM}     xpath=//android.widget.Button[@resource-id="android:id/button1"]
+${MENSAGEM_OP.CONCLUIDA}        xpath=//android.widget.TextView[@resource-id="android:id/message"]
 
 # MENU - EXPORTAR DADOS
 ${CAMPO_EXPORTAR}               xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/btn_exportar"]
@@ -213,3 +215,31 @@ E confirmar a exclusão
 
 Então o produto será deletado com sucesso
     Element Should Be Visible    ${TELA_NENHUM_PRODUTO}
+
+Dado que o usuário acessou a tela de menu do aplicativo
+    Click Element    ${BOTÃO_OK}
+    Click Element    ${BOTÃO_MENU}
+
+E acessou a função backup
+    Click Element    ${CAMPO_BACKUP}
+
+Quando selecionar a função Gerar backup
+    Click Element    ${BOTÃO_GERAR_BACKUP}
+
+Então o sistema exibirá o alerta com a mensagem "Operação concluída!"
+    Element Should Be Visible    ${TEXTO_OPERAÇÃO-CONCLUIDA}
+
+E exibirá uma botão para enviar o arquivo .bkp
+    Click Element    ${BOTÃO_SIM_CONFIRMA}
+
+E acessou a função restore
+    Click Element    ${CAMPO_RESTORE}
+
+Quando selecionar o arquivo desejado
+    Click Element    ${BOTÃO_SELECIONAR_ARQUIVO}
+
+E confirmar a restauração do arquivo
+    Swipe By Percent    80    50    50    10
+    Click Element    ${BOTÃO_ESTOQUE}
+    Click Element    ${GRUPOS.CSV}
+    Click Element    ${BOTÃO_SIM_CONFIRMA}
