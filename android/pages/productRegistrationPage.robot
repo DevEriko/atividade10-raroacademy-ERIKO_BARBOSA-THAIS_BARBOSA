@@ -98,14 +98,21 @@ ${TEXTO_AJUDA}                  xpath=//android.webkit.WebView[@text="Ajuda"]
 
 *** Keywords ***
 Dado que o usuário acessou a tela inicial do aplicativo
-    Click Element    ${BOTÃO_OK}
+    FOR    ${counter}    IN RANGE    1    15
+        ${STATUS}=    Run Keyword And Return Status    Element Should Be Visible    ${BOTÃO_OK}
+        IF    '${STATUS}'== ${true}
+            Click Element    ${BOTÃO_OK}
+        ELSE
+            Log    Elemento não encontrado, siga.
+        END
+    END
 
 Dado que o usuário acessou a tela de cadastro de produtos
-    Click Element    ${BOTÃO_OK}
+    Dado que o usuário acessou a tela inicial do aplicativo
     Click Element    ${BOTÃO_NOVO}
 
 Dado que o usuário acessou a tela de menu do aplicativo
-    Click Element    ${BOTÃO_OK}
+    Dado que o usuário acessou a tela inicial do aplicativo
     Click Element    ${BOTÃO_MENU}
 
 Quando selecionar a função novo
