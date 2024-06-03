@@ -72,3 +72,13 @@ C010 - Deve ser possível excluir o produto
     Quando acessar a função deletar
     E confirmar a exclusão
     Então o produto será deletado com sucesso
+
+C011 - Deve ser possível criar 5 produtos
+    [Template]    Então cria produtos com template
+    FOR    ${counter}    IN RANGE    1
+        01    Teclado    São Paulo    50    200,00    08
+        02    Mouse    Rio de Janeiro    100    100,00    08
+        03    Monitor    Belo Horizonte    30    2500,00    08
+        04    Microfone    Salvador    90    450,00    08
+        05    WebCam    Recife    20    300,00    08
+    END
