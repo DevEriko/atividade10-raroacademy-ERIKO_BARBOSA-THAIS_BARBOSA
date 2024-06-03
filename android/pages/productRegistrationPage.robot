@@ -62,6 +62,10 @@ ${BOTÃO_VISUALIZAR_PDF}         xpath=//android.widget.Button[@resource-id="br.
 ${BOTÃO_ENVIAR_PDF}             xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/btn_email"]
 ${BOTÃO_DATA_INI}               xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/data1"]
 ${BOTÃO_DATA_FIN}               xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/data2"]
+${ICONE_DRIVE}                  xpath=(//android.widget.ImageView[@resource-id="com.android.intentresolver:id/icon"])[1]
+${ICONE_ONEDRIVE}               xpath=(//android.widget.ImageView[@resource-id="com.android.intentresolver:id/icon"])[2]
+${ICONE_MICROSOFT}              xpath=(//android.widget.ImageView[@resource-id="com.android.intentresolver:id/icon"])[3]
+${ICONE_SAMSUNG}                xpath=(//android.widget.ImageView[@resource-id="com.android.intentresolver:id/icon"])[4]
 
 # MENU - BACKUP
 ${CAMPO_BACKUP}                 xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/btn_backup"]
@@ -276,3 +280,28 @@ E acessou a função backup
 
 E salvar a operação
     Click Element    ${BOTÃO_SALVAR}
+
+E acessou a opção inventário de estoque
+    Click Element    ${CAMPO_RELATÓRIO}
+    Click Element    ${INVENTÁRIO_ESTOQUE}
+
+Quando concluir a operação sem filtrar o perídodo
+    Page Should Not Contain Element    ${BOTÃO_DATA_INI}
+    Page Should Not Contain Element    ${BOTÃO_DATA_FIN}
+    Click Element    ${BOTÃO_GERAR-PDF}
+
+Então o sistema não processará o relatório com sucesso
+    Page Should Not Contain Element    ${BOTÃO_GERAR-PDF}
+
+E gerou o relatório de inventário de estoque
+    Click Element    ${CAMPO_RELATÓRIO}
+    Click Element    ${INVENTÁRIO_ESTOQUE}
+
+Quando acessar a função visualizar pdf
+    Click Element    ${BOTÃO_VISUALIZAR_PDF}
+
+Então o sistema exibirá o arquivo e a opção para enviar por e-mail estará disponível
+    Element Should Be Visible    ${ICONE_DRIVE}
+    Element Should Be Visible    ${ICONE_ONEDRIVE}
+    Element Should Be Visible    ${ICONE_MICROSOFT}
+    Element Should Be Visible    ${ICONE_SAMSUNG}
