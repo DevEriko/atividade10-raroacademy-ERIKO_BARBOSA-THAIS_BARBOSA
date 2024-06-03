@@ -129,7 +129,6 @@ Então o produto será registrado com sucesso
 
 Quando preencher todas as informações exceto o campo Descrição
     Input Text    ${CAMPO_CÓDIGO}    131415
-    Input Text    ${CAMPO_DESCRIÇÃO}    tESTE
     Input Text    ${CAMPO_UNIDADE}    São Paulo
     Input Text    ${CAMPO_QUANTIDADE}    2
     Input Text    ${CAMPO_VAL.UNIT}    100
@@ -149,7 +148,7 @@ Quando preencher todas as informações exceto o campo Quantidade
     Input Text    ${CAMPO_LOTE}    30
 
 Quando preencher todas as informações exceto o campo Valor unitário
-    Input Text    ${CAMPO_CÓDIGO}    131415
+    Input Text    ${CAMPO_CÓDIGO}    E.R.T.H
     Input Text    ${CAMPO_DESCRIÇÃO}    Produtos Barbosas
     Input Text    ${CAMPO_UNIDADE}    São Paulo
     Input Text    ${CAMPO_QUANTIDADE}    2
@@ -157,7 +156,7 @@ Quando preencher todas as informações exceto o campo Valor unitário
 
 E possui um produto registrado
     Click Element    ${BOTÃO_NOVO}
-    Input Text    ${CAMPO_CÓDIGO}    131415
+    Input Text    ${CAMPO_CÓDIGO}    BOX2
     Input Text    ${CAMPO_DESCRIÇÃO}    Produtos Barbosas
     Input Text    ${CAMPO_UNIDADE}    São Paulo
     Input Text    ${CAMPO_QUANTIDADE}    10

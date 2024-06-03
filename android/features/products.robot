@@ -17,7 +17,7 @@ CT002 - Deve ser possível cadastrar um produto preenchendo os campos obrigatór
     E salvar a operação
     Então o produto será registrado com sucesso
 
-CT003 - Não deve ser possível cadastrar um produto sem preencher a Descrição
+CT003 - Não deve ser possível cadastrar um produto sem preencher a Descriçao
     Dado que o usuário acessou a tela de cadastro de produtos
     Quando preencher todas as informações exceto o campo Descrição
     E salvar a operação
