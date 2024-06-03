@@ -8,6 +8,7 @@ ${ANDROID_PLATFORM_VERSION}     14
 ${APP_PACKAGE}                  br.com.pztec.estoque
 ${APP_ACTIVITY}                 .Inicio
 ${ANDROID_PLATFORM_NAME}        Android
+${PERMISSÃO}                    true
 
 
 *** Keywords ***
@@ -19,6 +20,7 @@ Abrir App
     ...    platformVersion=${ANDROID_PLATFORM_VERSION}
     ...    appPackage=${APP_PACKAGE}
     ...    appActivity=${APP_ACTIVITY}
+    ...    autoGrantPermissions=${PERMISSÃO}
 
 Teardown
     Run Keyword If Test Failed    Capture Page Screenshot

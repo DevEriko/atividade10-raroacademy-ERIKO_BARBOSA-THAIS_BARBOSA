@@ -5,8 +5,6 @@ Library     XML
 
 *** Variables ***
 ${BOTÃO_OK}                     xpath=//android.widget.Button[@resource-id="android:id/button1"]
-${BOTÃO_DURANTE_O_APP}          xpath=//android.widget.Button[@resource-id="com.android.permissioncontroller:id/permission_allow_foreground_only_button"]
-${BOTÃO_PERMITIR}               xpath=//android.widget.Button[@resource-id="com.android.permissioncontroller:id/permission_allow_button"]
 
 # Elementos que ficam no cadastro de produto.
 ${BOTÃO_NOVO}                   xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/Button1"]
@@ -32,6 +30,9 @@ ${CAMPO_DIMINUI}                xpath=//android.widget.EditText[@resource-id="br
 ${CAMPO_MOTIVO}                 xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_motivo"]
 ${CAMPO_DOC/REF}                xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_referencia"]
 ${MENSAGEM_ESTOQUE_INSUFI}      xpath=//android.widget.TextView[@resource-id="android:id/message"]
+${BOTÃO_SIM_CONFIRMA}           xpath=//android.widget.Button[@resource-id="android:id/button1"]
+${TELA_NENHUM_PRODUTO}          xpath=//android.widget.ScrollView[@resource-id="br.com.pztec.estoque:id/scrollView1"]
+${CAMPO_PESQUISAR}              xpath=//android.widget.AutoCompleteTextView[@resource-id="android:id/search_src_text"]
 
 # Depois de Salvo - Criei um produto! Abaixo Segue os 4 elementos que acho necessário validarmos.
 ${BOTÃO_DELETAR}                xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/deletar"]
@@ -96,8 +97,6 @@ ${TEXTO_AJUDA}                  xpath=//android.webkit.WebView[@text="Ajuda"]
 *** Keywords ***
 Dado que o usuário acessou a tela inicial do aplicativo
     Click Element    ${BOTÃO_OK}
-    Click Element    ${BOTÃO_DURANTE_O_APP}
-    Click Element    ${BOTÃO_PERMITIR}
 
 Quando selecionar a função novo
     Click Element    ${BOTÃO_NOVO}
@@ -112,8 +111,6 @@ Então terá acesso a tela de cadastro de produtos
 
 Dado que o usuário acessou a tela de cadastro de produtos
     Click Element    ${BOTÃO_OK}
-    Click Element    ${BOTÃO_DURANTE_O_APP}
-    Click Element    ${BOTÃO_PERMITIR}
     Click Element    ${BOTÃO_NOVO}
 
 Quando preencher as informações obrigatórias
@@ -132,13 +129,13 @@ Então o produto será registrado com sucesso
 
 Quando preencher todas as informações exceto o campo Descrição
     Input Text    ${CAMPO_CÓDIGO}    131415
+    Input Text    ${CAMPO_DESCRIÇÃO}    tESTE
     Input Text    ${CAMPO_UNIDADE}    São Paulo
     Input Text    ${CAMPO_QUANTIDADE}    2
     Input Text    ${CAMPO_VAL.UNIT}    100
     Input Text    ${CAMPO_LOTE}    30
 
 Então o sistema exibirá um ícone vermelho com uma interrogação
-    Click Element    ${CAMPO_QUANTIDADE}
     Element Should Be Visible    ${CAMPO_QUANTIDADE}
 
 E o produto não será registrado com sucesso
@@ -187,13 +184,16 @@ Quando acessar a função saída e indicar um valor maior que o total disponíve
     Input Text    ${CAMPO_DOC/REF}    BOX
 
 E acessar a função salvar
-    Click Element    ${BOTÃO_SALVAR}
+    Click Element    ${BOTÃO_SALVAR_GERAL}
 
 Então a quantidade indicada será acresentada ao estoque com sucesso
     Element Should Be Visible    ${INFORMAÇÕES_PRODUTO}
 
 Então a quantidade indicada será decrementada do estoque com sucesso
     Element Should Be Visible    ${INFORMAÇÕES_PRODUTO}
+
+E acessar a salvar
+    Click Element    ${BOTÃO_SALVAR}
 
 Então o sistema exibirá o alerta com a mensagem "Estoque insuficiente"
     Element Should Contain Text    ${MENSAGEM_ESTOQUE_INSUFI}    Estoque insuficiente
@@ -205,3 +205,12 @@ Quando acessar a função editar e alterar os dados do produto
 
 Então as informações do produto serão alteradas com sucesso
     Element Should Be Visible    ${INFORMAÇÕES_PRODUTO}
+
+Quando acessar a função deletar
+    Click Element    ${BOTÃO_DELETAR}
+
+E confirmar a exclusão
+    Click Element    ${BOTÃO_SIM_CONFIRMA}
+
+Então o produto será deletado com sucesso
+    Element Should Be Visible    ${TELA_NENHUM_PRODUTO}

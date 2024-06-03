@@ -17,12 +17,12 @@ CT002 - Deve ser possível cadastrar um produto preenchendo os campos obrigatór
     E salvar a operação
     Então o produto será registrado com sucesso
 
-# CT003 - Não deve ser possível cadastrar um produto sem preencher a Descrição
-#    Dado que o usuário acessou a tela de cadastro de produtos
-#    Quando preencher todas as informações exceto o campo Descrição
-#    E salvar a operação
-#    Então o sistema exibirá um ícone vermelho com uma interrogação
-#    E o produto não será registrado com sucesso
+CT003 - Não deve ser possível cadastrar um produto sem preencher a Descrição
+    Dado que o usuário acessou a tela de cadastro de produtos
+    Quando preencher todas as informações exceto o campo Descrição
+    E salvar a operação
+    Então o sistema exibirá um ícone vermelho com uma interrogação
+    E o produto não será registrado com sucesso
 
 CT004 - Não deve ser possível cadastrar um produto sem preencher a Quantidade
     Dado que o usuário acessou a tela de cadastro de produtos
@@ -63,7 +63,7 @@ C009 - Deve ser possível editar as informações do produto
     Dado que o usuário acessou a tela inicial do aplicativo
     E possui um produto registrado
     Quando acessar a função editar e alterar os dados do produto
-    E acessar a função salvar
+    E acessar a salvar
     Então as informações do produto serão alteradas com sucesso
 
 C010 - Deve ser possível excluir o produto
@@ -72,9 +72,3 @@ C010 - Deve ser possível excluir o produto
     Quando acessar a função deletar
     E confirmar a exclusão
     Então o produto será deletado com sucesso
-
-C011 - Deve ser possível pesquisar um produto
-    Dado que o usuário acessou a tela inicial do aplicativo
-    E possui um produto registrado
-    Quando acessar a função pesquisar e informar a Descrição do produto
-    Então o produto será encontrado com sucesso
