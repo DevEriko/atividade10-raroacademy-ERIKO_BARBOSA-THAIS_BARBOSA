@@ -102,7 +102,6 @@ ${MENS_COLOCA_DATA}             xpath=/hierarchy/android.widget.FrameLayout
 
 *** Keywords ***
 Dado que o usuário acessou a tela inicial do aplicativo
-    Click Element    ${BOTÃO_NOVO}
     FOR    ${counter}    IN RANGE    1    15
         ${STATUS}=    Run Keyword And Return Status    Element Should Be Visible    ${BOTÃO_OK}
         IF    '${STATUS}'== ${true}
