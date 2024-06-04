@@ -4,7 +4,7 @@ Resource    ../base.robot
 
 *** Variables ***
 ${ANDROID_AUTOMATION_NAME}      UIAutomator2
-${ANDROID_PLATFORM_VERSION}     14
+${ANDROID_PLATFORM_VERSION}     10
 ${APP_PACKAGE}                  br.com.pztec.estoque
 ${APP_ACTIVITY}                 .Inicio
 ${ANDROID_PLATFORM_NAME}        Android

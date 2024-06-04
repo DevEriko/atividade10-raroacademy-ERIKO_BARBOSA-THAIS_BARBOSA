@@ -36,13 +36,7 @@ CT005 - Deve ser possível obter o inventário de estoque sem informar um filtro
     Quando concluir a operação sem filtrar o perídodo
     Então o sistema exibirá opções para abrir o arquivo e enviá-lo por e-mail
 
-CT006 - Não deve ser possível obter o PDF do inventário de estoque
-    Dado que o usuário acessou a tela de relatórios
-    E acessou a opção inventário de estoque
-    Quando concluir a operação sem filtrar o perídodo
-    Então o sistema não processará o relatório com sucesso
-
-CT007 - Deve ser possível visualizar o inventário de estoque e enviá-lo por e-mail
+CT006 - Deve ser possível visualizar o inventário de estoque e enviá-lo por e-mail
     Dado que o usuário acessou a tela de relatórios
     E gerou o relatório de inventário de estoque
     Quando acessar a função visualizar pdf

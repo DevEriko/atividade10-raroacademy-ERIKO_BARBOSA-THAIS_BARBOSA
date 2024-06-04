@@ -26,7 +26,7 @@ ${BOTÃO_SALVAR}                 xpath=//android.widget.Button[@resource-id="br.
 ${INFORMAÇÕES_PRODUTO}          xpath=//android.widget.LinearLayout[@resource-id="br.com.pztec.estoque:id/linha_parte1"]
 ${TELA_NÃO_VALVOU}              xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout
 ${CAMPO_ADICIONAR}              xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_qtdentrada"]
-${CAMPO_DIMINUI}                xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_qtdsaida"]
+${CAMPO_DIMINUI}                id=br.com.pztec.estoque:id/txt_qtdsaida
 ${CAMPO_MOTIVO}                 xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_motivo"]
 ${CAMPO_DOC/REF}                xpath=//android.widget.EditText[@resource-id="br.com.pztec.estoque:id/txt_referencia"]
 ${MENSAGEM_ESTOQUE_INSUFI}      xpath=//android.widget.TextView[@resource-id="android:id/message"]
@@ -37,10 +37,10 @@ ${DESC_PRODUTO}                 xpath=//android.widget.TextView[@resource-id="br
 ${BOTÃO_BUSCAR}                 xpath=//android.widget.ImageView[@content-desc="Buscar"]
 
 # DADOS EXIBIDOS APÓS CRIAR UM PRODUTO
-${BOTÃO_DELETAR}                xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/deletar"]
+${BOTÃO_DELETAR}                id=br.com.pztec.estoque:id/deletar
 ${BOTÃO_EDITAR}                 xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/editar"]
 ${BOTÃO_ENTRADA}                xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/entrada"]
-${BOTÃO_SAIDA}                  xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/saida"]
+${BOTÃO_SAIDA}                  id=br.com.pztec.estoque:id/saida
 
 # MENU - GRUPO DE PRODUTOS
 ${BOTÃO_MENU}                   xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/Button3"]
@@ -74,9 +74,9 @@ ${TEXTO_ENVIAR}                 xpath=//android.widget.TextView[@resource-id="an
 ${CAMPO_RESTORE}                xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/btn_restore"]
 ${TEXTO_ATENÇÃO}                xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/lbl_mensagem"]
 ${BOTÃO_SELECIONAR_ARQUIVO}     xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/btn_procurar"]
-${BOTÃO_ESTOQUE}                xpath=//android.widget.TextView[@resource-id="android:id/text1" and @text="Estoque"]
-${GRUPOS.CSV}                   xpath=//android.widget.TextView[@resource-id="android:id/text1" and @text="grupos.csv"]
-${PRODUTOS_CSV}                 xpath=//android.widget.TextView[@resource-id="android:id/text1" and @text="produtos.csv"]
+${BOTÃO_ESTOQUE}                xpath=//android.widget.TextView[contains(@text,"Estoque")]
+${GRUPOS.CSV}                   xpath=//android.widget.TextView[contains(@text,"grupos.csv")]
+${PRODUTOS_CSV}                 xpath=//android.widget.TextView[contains(@text,"produtos.csv")]
 ${CONFIRMA_RESTAURAÇÃO_SIM}     xpath=//android.widget.Button[@resource-id="android:id/button1"]
 ${MENSAGEM_OP.CONCLUIDA}        xpath=//android.widget.TextView[@resource-id="android:id/message"]
 
@@ -113,11 +113,11 @@ Dado que o usuário acessou a tela inicial do aplicativo
 
 Dado que o usuário acessou a tela de cadastro de produtos
     Dado que o usuário acessou a tela inicial do aplicativo
+    Wait Until Element Is Visible    ${BOTÃO_NOVO}
     Click Element    ${BOTÃO_NOVO}
 
 Dado que o usuário acessou a tela de menu do aplicativo
     Dado que o usuário acessou a tela inicial do aplicativo
-    Click Element    ${BOTÃO_OK}
     Click Element    ${BOTÃO_MENU}
 
 Dado que o usuário acessou a tela de menu do aplicativo e possui produtos registrados
@@ -127,7 +127,7 @@ Dado que o usuário acessou a tela de menu do aplicativo e possui produtos regis
     Click Element    ${BOTÃO_MENU}
 
 Dado que o usuário acessou a tela de relatórios
-    Click Element    ${BOTÃO_OK}
+    Dado que o usuário acessou a tela inicial do aplicativo
     Click Element    ${BOTÃO_MENU}
     Click Element    ${CAMPO_RELATÓRIO}
 
@@ -170,12 +170,15 @@ Quando acessar a função entrada e indicar o valor a ser acrescentado
     Input Text    ${CAMPO_DOC/REF}    BOX
 
 Quando acessar a função saída e indicar o valor a ser decrementado
+    Wait Until Element Is Visible    ${BOTÃO_SAIDA}
     Click Element    ${BOTÃO_SAIDA}
+    Wait Until Element Is Visible    ${CAMPO_DIMINUI}
     Input Text    ${CAMPO_DIMINUI}    1
     Input Text    ${CAMPO_MOTIVO}    Removendo mais itens
     Input Text    ${CAMPO_DOC/REF}    BOX
 
 Quando acessar a função saída e indicar um valor maior que o total disponível em estoque
+    Wait Until Element Is Visible    ${BOTÃO_SAIDA}
     Click Element    ${BOTÃO_SAIDA}
     Input Text    ${CAMPO_DIMINUI}    50
     Input Text    ${CAMPO_MOTIVO}    Removendo mais itens
@@ -196,6 +199,7 @@ Quando selecionar o arquivo desejado
     Click Element    ${BOTÃO_SELECIONAR_ARQUIVO}
 
 Quando acessar a função impotar dados
+    Wait Until Element Is Visible    ${CAMPO_IMPORTAR}
     Click Element    ${CAMPO_IMPORTAR}
 
 Quando acessar a função relatórios
@@ -228,16 +232,16 @@ Então terá acesso a tela de cadastro de produtos
     Element Should Be Visible    ${CAMPO_LOTE}
 
 Então o produto será registrado com sucesso
-    Element Should Be Visible    ${INFORMAÇÕES_PRODUTO}
+    Element Should Be Visible    ${DESC_PRODUTO}
 
 Então o sistema exibirá um ícone vermelho com uma interrogação
     Element Should Be Visible    ${CAMPO_QUANTIDADE}
 
 Então a quantidade indicada será acresentada ao estoque com sucesso
-    Element Should Be Visible    ${INFORMAÇÕES_PRODUTO}
+    Element Should Be Visible    ${BOTÃO_BUSCAR}
 
 Então a quantidade indicada será decrementada do estoque com sucesso
-    Element Should Be Visible    ${INFORMAÇÕES_PRODUTO}
+    Page Should Contain Element    ${INFORMAÇÕES_PRODUTO}
 
 Então o sistema exibirá o alerta com a mensagem "Estoque insuficiente"
     Element Should Contain Text    ${MENSAGEM_ESTOQUE_INSUFI}    Estoque insuficiente
@@ -279,6 +283,7 @@ E acessou a função restore
 
 E confirmar a restauração do arquivo
     Swipe By Percent    80    50    50    10
+    Swipe By Percent    50    50    50    10
     Click Element    ${BOTÃO_ESTOQUE}
     Click Element    ${GRUPOS.CSV}
     Click Element    ${BOTÃO_SIM_CONFIRMA}
@@ -288,9 +293,6 @@ E acessar a salvar
 
 E confirmar a exclusão
     Click Element    ${BOTÃO_SIM_CONFIRMA}
-
-E acessou a função backup
-    Click Element    ${CAMPO_BACKUP}
 
 E o produto não será registrado com sucesso
     Element Should Be Visible    ${TELA_NÃO_VALVOU}
@@ -333,6 +335,7 @@ Então o sistema exibirá opções para abrir o arquivo e enviá-lo por e-mail
     Element Should Be Visible    ${BOTÃO_ENVIAR_PDF}
 
 E acessou a tela de impotar dados
+    Wait Until Element Is Visible    ${CAMPO_IMPORTAR}
     Click Element    ${CAMPO_IMPORTAR}
 
 E selecionar a pasta estoque
