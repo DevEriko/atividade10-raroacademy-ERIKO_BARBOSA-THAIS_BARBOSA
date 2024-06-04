@@ -38,42 +38,42 @@ CT005 - Não deve ser possível cadastrar um produto sem preencher o Valor unit�
     Então o sistema exibirá um ícone vermelho com uma interrogação
     E o produto não será registrado com sucesso
 
-C006 - Deve ser possível acrescentar a quantidade de produto
+CT006 - Deve ser possível acrescentar a quantidade de produto
     Dado que o usuário acessou a tela inicial do aplicativo
     E possui um produto registrado
     Quando acessar a função entrada e indicar o valor a ser acrescentado
     E acessar a função salvar
     Então a quantidade indicada será acresentada ao estoque com sucesso
 
-C007 - Deve ser possível decrementar a quantidade de produto
+CT007 - Deve ser possível decrementar a quantidade de produto
     Dado que o usuário acessou a tela inicial do aplicativo
     E possui um produto registrado
     Quando acessar a função saída e indicar o valor a ser decrementado
     E acessar a função salvar
     Então a quantidade indicada será decrementada do estoque com sucesso
 
-C008 - Não deve ser possível deixar o estoque do produto negativo
+CT008 - Não deve ser possível deixar o estoque do produto negativo
     Dado que o usuário acessou a tela inicial do aplicativo
     E possui um produto registrado
     Quando acessar a função saída e indicar um valor maior que o total disponível em estoque
     E acessar a função salvar
     Então o sistema exibirá o alerta com a mensagem "Estoque insuficiente"
 
-C009 - Deve ser possível editar as informações do produto
+CT009 - Deve ser possível editar as informações do produto
     Dado que o usuário acessou a tela inicial do aplicativo
     E possui um produto registrado
     Quando acessar a função editar e alterar os dados do produto
     E acessar a salvar
     Então as informações do produto serão alteradas com sucesso
 
-C010 - Deve ser possível excluir o produto
+CT010 - Deve ser possível excluir o produto
     Dado que o usuário acessou a tela inicial do aplicativo
     E possui um produto registrado
     Quando acessar a função deletar
     E confirmar a exclusão
     Então o produto será deletado com sucesso
 
-C011- Deve ser possível criar mais de 1 produto
+CT011- Deve ser possível criar mais de 1 produto
     [Template]    Criar vários produtos
     Telcado 5    20    3700
     Mouse    20    3700

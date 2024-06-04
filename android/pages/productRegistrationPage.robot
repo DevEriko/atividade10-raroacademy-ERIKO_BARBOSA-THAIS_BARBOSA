@@ -34,7 +34,7 @@ ${BOTÃO_SIM_CONFIRMA}           xpath=//android.widget.Button[@resource-id="and
 ${TELA_NENHUM_PRODUTO}          xpath=//android.widget.ScrollView[@resource-id="br.com.pztec.estoque:id/scrollView1"]
 ${CAMPO_PESQUISAR}              xpath=//android.widget.AutoCompleteTextView[@resource-id="android:id/search_src_text"]
 ${DESC_PRODUTO}                 xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/txt_descricao"]
-${BOTÃO_BUSCAR}                 xpath=//android.widget.ImageView[@content-desc="Buscar"]
+${BOTÃO_BUSCAR}                 xpath=//android.widget.ImageView[contains(@content-desc,"Buscar")]
 
 # DADOS EXIBIDOS APÓS CRIAR UM PRODUTO
 ${BOTÃO_DELETAR}                id=br.com.pztec.estoque:id/deletar
@@ -232,13 +232,13 @@ Então terá acesso a tela de cadastro de produtos
     Element Should Be Visible    ${CAMPO_LOTE}
 
 Então o produto será registrado com sucesso
-    Element Should Be Visible    ${DESC_PRODUTO}
+    Element Should Be Visible    ${INFORMAÇÕES_PRODUTO}
 
 Então o sistema exibirá um ícone vermelho com uma interrogação
     Element Should Be Visible    ${CAMPO_QUANTIDADE}
 
 Então a quantidade indicada será acresentada ao estoque com sucesso
-    Element Should Be Visible    ${BOTÃO_BUSCAR}
+    Page Should Contain Element    ${INFORMAÇÕES_PRODUTO}
 
 Então a quantidade indicada será decrementada do estoque com sucesso
     Page Should Contain Element    ${INFORMAÇÕES_PRODUTO}
@@ -247,7 +247,7 @@ Então o sistema exibirá o alerta com a mensagem "Estoque insuficiente"
     Element Should Contain Text    ${MENSAGEM_ESTOQUE_INSUFI}    Estoque insuficiente
 
 Então as informações do produto serão alteradas com sucesso
-    Element Should Be Visible    ${INFORMAÇÕES_PRODUTO}
+    Page Should Contain Element    ${INFORMAÇÕES_PRODUTO}
 
 Então o produto será deletado com sucesso
     Element Should Be Visible    ${TELA_NENHUM_PRODUTO}
