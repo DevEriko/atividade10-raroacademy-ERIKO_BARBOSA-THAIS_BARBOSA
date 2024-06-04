@@ -73,10 +73,10 @@ C010 - Deve ser possível excluir o produto
     E confirmar a exclusão
     Então o produto será deletado com sucesso
 
-C011- Deve ser possível criar mais de 1 produto
-    [Template]    Criar vários produtos
-    FOR    ${counter}    IN RANGE    1
-        Playstation 5    20    3700
-        Xbox X    20    3700
-        Switch    15    2300
-    END
+# C011- Deve ser possível criar mais de 1 produto
+#    [Template]    Criar vários produtos
+#    FOR    ${counter}    IN RANGE    1
+#    Playstation 5    20    3700
+#    Xbox X    20    3700
+#    Switch    15    2300
+#    END

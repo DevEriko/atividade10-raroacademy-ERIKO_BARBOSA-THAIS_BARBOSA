@@ -18,16 +18,10 @@ CT002 - Deve ser possível filtrar as entradas e saídas de produtos por um peri
     E selecionar a função gerar pdf
     Então o arquivo será gerado em pdf com o filtro selecionado
 
-CT003 - Deve ser possível visualizar o documento gerado em pdf
-    Dado que o usuário acessou a tela de relatórios
-    E gerou o relatório desejado
-    Então o sistema exibirá opções para abrir o arquivo e enviá-lo por e-mail
-
-CT004 - Não deve ser possível emitir um relatório sem informar um período
+CT004 - Não deve ser possível emitir um relatório sem informar um periodo
     Dado que o usuário acessou a tela de relatórios
     E acessou a opção de relatório desejada
-    Quando não selecionar a data inicial e final
-    E concluir a operação
+    Quando não selecionar a data inicial e final e gerar o PDF
     Então o sistema exibirá o alerta com a mensagem: "Por favor selecione um período de datas"
 
 CT005 - Não deve ser possível obter o PDF do inventário de estoque

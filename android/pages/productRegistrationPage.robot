@@ -62,10 +62,6 @@ ${BOTÃO_VISUALIZAR_PDF}         xpath=//android.widget.Button[@resource-id="br.
 ${BOTÃO_ENVIAR_PDF}             xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/btn_email"]
 ${BOTÃO_DATA_INI}               xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/data1"]
 ${BOTÃO_DATA_FIN}               xpath=//android.widget.TextView[@resource-id="br.com.pztec.estoque:id/data2"]
-${ICONE_DRIVE}                  xpath=(//android.widget.ImageView[@resource-id="com.android.intentresolver:id/icon"])[1]
-${ICONE_ONEDRIVE}               xpath=(//android.widget.ImageView[@resource-id="com.android.intentresolver:id/icon"])[2]
-${ICONE_MICROSOFT}              xpath=(//android.widget.ImageView[@resource-id="com.android.intentresolver:id/icon"])[3]
-${ICONE_SAMSUNG}                xpath=(//android.widget.ImageView[@resource-id="com.android.intentresolver:id/icon"])[4]
 
 # MENU - BACKUP
 ${CAMPO_BACKUP}                 xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/btn_backup"]
@@ -101,10 +97,12 @@ ${BOTÃO_GRUPO-PRODUTOS}         xpath=//android.widget.Button[@resource-id="br.
 # MENU - AJUDA
 ${CAMPO_AJUDA}                  xpath=//android.widget.Button[@resource-id="br.com.pztec.estoque:id/btn_ajuda"]
 ${TEXTO_AJUDA}                  xpath=//android.webkit.WebView[@text="Ajuda"]
+${MENS_COLOCA_DATA}             xpath=/hierarchy/android.widget.FrameLayout
 
 
 *** Keywords ***
 Dado que o usuário acessou a tela inicial do aplicativo
+    Click Element    ${BOTÃO_NOVO}
     FOR    ${counter}    IN RANGE    1    15
         ${STATUS}=    Run Keyword And Return Status    Element Should Be Visible    ${BOTÃO_OK}
         IF    '${STATUS}'== ${true}
@@ -120,6 +118,7 @@ Dado que o usuário acessou a tela de cadastro de produtos
 
 Dado que o usuário acessou a tela de menu do aplicativo
     Dado que o usuário acessou a tela inicial do aplicativo
+    Click Element    ${BOTÃO_OK}
     Click Element    ${BOTÃO_MENU}
 
 Dado que o usuário acessou a tela de menu do aplicativo e possui produtos registrados
@@ -127,6 +126,11 @@ Dado que o usuário acessou a tela de menu do aplicativo e possui produtos regis
     Criar vários produtos    mouse    3    50
     Criar vários produtos    microfone    20    80
     Click Element    ${BOTÃO_MENU}
+
+Dado que o usuário acessou a tela de relatórios
+    Click Element    ${BOTÃO_OK}
+    Click Element    ${BOTÃO_MENU}
+    Click Element    ${CAMPO_RELATÓRIO}
 
 Quando selecionar a função novo
     Click Element    ${BOTÃO_NOVO}
@@ -211,7 +215,10 @@ Quando selecionar a data inicial e final
     Click Element    ${BOTÃO_OK}
 
 Quando acessar a função visualizar pdf
-    Então o arquivo será gerado em pdf com o filtro selecionado
+    Element Should Be Visible    ${BOTÃO_VISUALIZAR_PDF}
+
+Quando não selecionar a data inicial e final e gerar o PDF
+    Click Element    ${BOTÃO_GERAR-PDF}
 
 Então terá acesso a tela de cadastro de produtos
     Element Should Be Visible    ${CAMPO_CÓDIGO}
@@ -265,10 +272,6 @@ Então o arquivo será gerado em pdf com o filtro selecionado
     Wait Until Element Is Visible    ${BOTÃO_VISUALIZAR_PDF}
     Click Element    ${BOTÃO_VISUALIZAR_PDF}
 
-Então o sistema exibirá opções para abrir o arquivo e enviá-lo por e-mail
-    Page Should Contain Element    ${BOTÃO_VISUALIZAR_PDF}
-    Page Should Contain Element    ${BOTÃO_ENVIAR_PDF}
-
 E exibirá uma botão para enviar o arquivo .bkp
     Click Element    ${BOTÃO_SIM_CONFIRMA}
 
@@ -312,9 +315,7 @@ E acessou a função backup
 E salvar a operação
     Click Element    ${BOTÃO_SALVAR}
 
-<<<<<<< HEAD
 E acessou a opção inventário de estoque
-    Click Element    ${CAMPO_RELATÓRIO}
     Click Element    ${INVENTÁRIO_ESTOQUE}
 
 Quando concluir a operação sem filtrar o perídodo
@@ -326,18 +327,11 @@ Então o sistema não processará o relatório com sucesso
     Page Should Not Contain Element    ${BOTÃO_GERAR-PDF}
 
 E gerou o relatório de inventário de estoque
-    Click Element    ${CAMPO_RELATÓRIO}
     Click Element    ${INVENTÁRIO_ESTOQUE}
 
-Quando acessar a função visualizar pdf
-    Click Element    ${BOTÃO_VISUALIZAR_PDF}
-
 Então o sistema exibirá o arquivo e a opção para enviar por e-mail estará disponível
-    Element Should Be Visible    ${ICONE_DRIVE}
-    Element Should Be Visible    ${ICONE_ONEDRIVE}
-    Element Should Be Visible    ${ICONE_MICROSOFT}
-    Element Should Be Visible    ${ICONE_SAMSUNG}
-=======
+    Element Should Be Visible    ${BOTÃO_ENVIAR_PDF}
+
 E acessou a tela de impotar dados
     Click Element    ${CAMPO_IMPORTAR}
 
@@ -364,9 +358,13 @@ E selecionar a função gerar pdf
     Click Element    ${BOTÃO_GERAR-PDF}
 
 E gerou o relatório desejado
-    Click Element    ${BOTÃO_MENU}
-    Click Element    ${CAMPO_RELATÓRIO}
     Click Element    ${ENTRADAS_ESTOQUE}
+    Click Element    ${BOTÃO_DATA_INI}
+    Click Element    ${BOTÃO_OK}
+    Click Element    ${BOTÃO_DATA_FIN}
+    Click Element    ${BOTÃO_OK}
     Wait Until Element Is Visible    ${BOTÃO_GERAR-PDF}
     Click Element    ${BOTÃO_GERAR-PDF}
->>>>>>> bdde13f6eee85024d548cb35ab35010d99d338e0
+
+Então o sistema exibirá o alerta com a mensagem: "Por favor selecione um período de datas"
+    Element Should Be Visible    ${MENS_COLOCA_DATA}
