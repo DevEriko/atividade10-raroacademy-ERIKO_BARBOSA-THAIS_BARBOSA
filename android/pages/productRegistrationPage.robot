@@ -328,7 +328,8 @@ Então o sistema não processará o relatório com sucesso
 E gerou o relatório de inventário de estoque
     Click Element    ${INVENTÁRIO_ESTOQUE}
 
-Então o sistema exibirá o arquivo e a opção para enviar por e-mail estará disponível
+Então o sistema exibirá opções para abrir o arquivo e enviá-lo por e-mail
+    Element Should Be Visible    ${BOTÃO_VISUALIZAR_PDF}
     Element Should Be Visible    ${BOTÃO_ENVIAR_PDF}
 
 E acessou a tela de impotar dados

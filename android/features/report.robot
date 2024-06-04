@@ -28,23 +28,22 @@ CT004 - Não deve ser possível emitir um relatório sem informar um período
     Dado que o usuário acessou a tela de relatórios
     E acessou a opção de relatório desejada
     Quando não selecionar a data inicial e final e gerar o PDF
-    E concluir a operação
     Então o sistema exibirá o alerta com a mensagem: "Por favor selecione um período de datas"
 
 CT005 - Deve ser possível obter o inventário de estoque sem informar um filtro por período
     Dado que o usuário acessou a tela de relatórios
     E acessou a opção inventário de estoque
     Quando concluir a operação sem filtrar o perídodo
-    Então o sistema processará o relatório com sucesso
+    Então o sistema exibirá opções para abrir o arquivo e enviá-lo por e-mail
 
-CT005 - Não deve ser possível obter o PDF do inventário de estoque
+CT006 - Não deve ser possível obter o PDF do inventário de estoque
     Dado que o usuário acessou a tela de relatórios
     E acessou a opção inventário de estoque
     Quando concluir a operação sem filtrar o perídodo
     Então o sistema não processará o relatório com sucesso
 
-CT006 - Deve ser possível visualizar o inventário de estoque e enviá-lo por e-mail
+CT007 - Deve ser possível visualizar o inventário de estoque e enviá-lo por e-mail
     Dado que o usuário acessou a tela de relatórios
     E gerou o relatório de inventário de estoque
     Quando acessar a função visualizar pdf
-    Então o sistema exibirá o arquivo e a opção para enviar por e-mail estará disponível
+    Então o sistema exibirá opções para abrir o arquivo e enviá-lo por e-mail
