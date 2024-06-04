@@ -11,7 +11,7 @@ CT001 - Deve ser possível importar um arquivo .csv. com os registros de produto
     Quando acessar a função impotar dados
     Então visualizará as 4 opções de importação do cenário
 
-CT002 - Deve ser possível gerar um arquivo .csv após o registro de produtos e todas informações
+CT002 - Deve ser possível gerar um arquivo csv apos o registro de produtos e todas informações
     Dado que o usuário acessou a tela de menu do aplicativo e possui produtos registrados
     E acessou a tela de impotar dados
     Quando selecionar a opção de restauração desejada
